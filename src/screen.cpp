@@ -11,14 +11,6 @@ void Screen::draw(){
 }
 
 
-void Screen::displayGrid(){
-    for(auto& row : grid){
-        for(auto& col : row){
-            std::cout<<col;
-        }
-        std::cout<<std::endl;
-    }
-}
 
 bool Screen::insideBondary(int&a , int&b){
     if(a > row || a<0  || b > col || b < 0){

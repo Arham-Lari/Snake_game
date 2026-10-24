@@ -4,7 +4,7 @@
 
 int main(int argc , char* argv[])
 {
-    const int window_width {800}, window_height{400};
+    const int window_width {1200}, window_height{720};
     Screen screen = Screen(window_width,window_width);
 
     InitWindow(window_width, window_height, "Snake_Game");
@@ -12,11 +12,13 @@ int main(int argc , char* argv[])
 
     Snake snake = Snake();
 
-    screen.displayGrid();
 
     while (!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(WHITE);
+        if(IsKeyDown(KEY_S)){
+            snake.moveDown();
+        }
         screen.draw();
         snake.draw();
         EndDrawing();
