@@ -12,7 +12,7 @@ void Screen::draw(){
 
 
 
-bool Screen::insideBondary(int&a , int&b){
+bool Screen::insideBondary(int a , int b){
     if(a > row || a<0  || b > col || b < 0){
        return false;
     }

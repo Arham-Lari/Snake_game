@@ -5,7 +5,7 @@
 int main(int argc , char* argv[])
 {
     const int window_width {1200}, window_height{720};
-    Screen screen = Screen(window_width,window_width);
+    Screen screen = Screen(window_width,window_height);
 
     InitWindow(window_width, window_height, "Snake_Game");
     SetTargetFPS(60);
@@ -18,6 +18,10 @@ int main(int argc , char* argv[])
         ClearBackground(WHITE);
         if(IsKeyDown(KEY_S)){
             snake.moveDown();
+        }
+        
+        if(IsKeyDown(KEY_A)){
+            snake.moveLeft();
         }
         screen.draw();
         snake.draw();
