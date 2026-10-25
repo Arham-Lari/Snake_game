@@ -3,9 +3,9 @@
 
 Snake::Snake(){
     snakebody = {
-        {5,5},
-        {6,5},
-        {7,5},
+        {8,5},
+        {9,5},
+        {10,5},
     };
     cellsize = 40;
     dx = 0;
@@ -23,6 +23,8 @@ void Snake::move(){
     if(snakebody.empty()) return;
 
     for(int i = snakebody.size() - 1; i >= 0;--i){
+        
+
         if(i == 0){
             snakebody[0].first += dx;
             snakebody[0].second += dy;
@@ -36,25 +38,25 @@ void Snake::move(){
 }
 
 void Snake::moveDown(){
+    if(dy != 0) return;
     dy = 1;
     dx = 0;
-    move();
 }
 
 void Snake :: moveUp(){
+    if(dy != 0) return;
     dy = -1;
     dx = 0;
-    move();
 }
 
 void Snake::moveLeft(){
-   dx = -1;
-   dy = 0;
-   move();
+    if(dx != 0) return;
+    dx = -1;
+    dy = 0;
 }
 
 void Snake::moveRight(){
+    if(dx != 0) return;
     dx = 1;
     dy = 0;
-    move();
 }

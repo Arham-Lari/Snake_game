@@ -1,18 +1,20 @@
 #pragma once
+#include "screen.h"
 #include <vector>
 class Snake{
     public:
         Snake();
         void draw();
-        void moveDown();
+        void move();
         void moveUp();
         void moveLeft();
         void moveRight();
+        void moveDown();
+        std::vector<std::pair<int, int>> snakebody;
 
     private:
-        std::vector<std::pair<int, int>> snakebody;
+        Screen sc ;
         int cellsize;
-        void move();
         float dx ;
         float dy;
 };
