@@ -1,6 +1,8 @@
 #pragma once
+#include "raylib.h"
 #include "snake.h"
 #include "screen.h"
+#include <utility>
 
 
 class Game{
@@ -9,10 +11,13 @@ class Game{
         Game();
         void draw();
         void movement();
+        void foodAte();
 
     private:
         Snake snake;
+        std::pair<int, int> foodPos;
         Screen screen;
         bool timer(double);
+        std::pair<int, int> foodGenerator();
         bool isTouchingBoundary();
 };

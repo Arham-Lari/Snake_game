@@ -1,4 +1,5 @@
 #include "snake.h"
+#include <iostream>
 #include <raylib.h>
 
 Snake::Snake(){
@@ -59,4 +60,14 @@ void Snake::moveRight(){
     if(dx != 0) return;
     dx = 1;
     dy = 0;
+}
+
+bool Snake::isColliding(int x, int y){
+    
+    if(snakebody[0].first == x && snakebody[0].second == y){
+        std::cout<<"the snake has collided";
+        return true;
+    } 
+
+    return false;
 }
