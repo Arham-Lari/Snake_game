@@ -67,12 +67,19 @@ bool Game::isTouchingBoundary(){
 
   return false;
 }
+
 std::pair<int, int> Game::foodGenerator()
 {
     int col = screen.col;
     int row = screen.row;
 
-    return { (rand()%(col / 1) *1),(rand()%(row / 1) * 1)};
+    std::pair<int, int> foodPos = { (rand()%(col / 1) *1),(rand()%(row / 1) * 1)};
+
+    if(snake.isColliding(foodPos.first, foodPos.second)){
+       foodPos = { (rand()%(col / 1) *1),(rand()%(row / 1) * 1)};
+    }
+
+    return foodPos;
 }
 
 void Game::foodAte(){
