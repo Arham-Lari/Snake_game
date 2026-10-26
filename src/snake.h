@@ -12,6 +12,7 @@ class Snake{
         void moveDown();
         std::vector<std::pair<int, int>> snakebody;
         bool isColliding(int x ,int y);
+        void increaseSnakeLength();
 
     private:
         Screen sc ;

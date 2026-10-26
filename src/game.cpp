@@ -1,4 +1,3 @@
-#include <iostream>
 #include "game.h"
 #include "screen.h"
 #include "snake.h"
@@ -80,6 +79,6 @@ void Game::foodAte(){
    
     if(snake.isColliding(foodPos.first, foodPos.second)){
         foodPos = foodGenerator();
-        std::cout<<"collision detecte"<<std::endl;
+        snake.increaseSnakeLength();
     }
 }

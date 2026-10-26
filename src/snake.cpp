@@ -71,3 +71,7 @@ bool Snake::isColliding(int x, int y){
 
     return false;
 }
+
+void Snake::increaseSnakeLength(){
+   snakebody.push_back({snakebody[snakebody.size() - 1].first, snakebody[snakebody.size() -1].second }); 
+}
