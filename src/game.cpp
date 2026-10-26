@@ -1,3 +1,4 @@
+#include <iostream>
 #include "game.h"
 #include "screen.h"
 #include "snake.h"
@@ -15,7 +16,7 @@ void Game::draw(){
   screen.draw();
   snake.draw();
 
-  DrawRectangle(foodPos.first, foodPos.second, 40, 40, RED);
+  DrawRectangle(foodPos.first * 40, foodPos.second * 40, 40, 40, RED);
   
 }
 
@@ -69,15 +70,16 @@ bool Game::isTouchingBoundary(){
 }
 std::pair<int, int> Game::foodGenerator()
 {
-    int width = GetScreenWidth();
-    int hieght = GetScreenHeight();
+    int col = screen.col;
+    int row = screen.row;
 
-    return { (rand()%(width / 40) *40),(rand()%(hieght / 40) * 40)};
+    return { (rand()%(col / 1) *1),(rand()%(row / 1) * 1)};
 }
 
 void Game::foodAte(){
    
     if(snake.isColliding(foodPos.first, foodPos.second)){
         foodPos = foodGenerator();
+        std::cout<<"collision detecte"<<std::endl;
     }
 }
