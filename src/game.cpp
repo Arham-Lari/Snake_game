@@ -23,7 +23,6 @@ void Game::movement(){
 
     if(timer(0.15)){
         if(isTouchingBoundary()) return;
-        else if(snake.snakeBodyCollision()) return;
         else{
             foodAte();
             snake.move();
