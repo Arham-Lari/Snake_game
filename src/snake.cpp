@@ -1,5 +1,5 @@
 #include "snake.h"
-#include <iostream>
+#include <cstddef>
 #include <raylib.h>
 
 Snake::Snake(){
@@ -23,19 +23,12 @@ void Snake::move(){
 
     if(snakebody.empty()) return;
 
-    for(int i = snakebody.size() - 1; i >= 0;--i){
-        
-
-        if(i == 0){
-            snakebody[0].first += dx;
-            snakebody[0].second += dy;
-            return;
-        }
-
-        snakebody[i].first = snakebody[i-1].first;
-        snakebody[i].second = snakebody[i-1].second;
-
+    for(int i = static_cast<int>(snakebody.size()) -1; i >0 ; --i){
+        snakebody[i] = snakebody[i-1];  
     }
+
+    snakebody[0].first += dx;
+    snakebody[0].second += dy;
 }
 
 void Snake::moveDown(){
@@ -65,7 +58,6 @@ void Snake::moveRight(){
 bool Snake::isColliding(int x, int y){
     
     if(snakebody[0].first == x && snakebody[0].second == y){
-        std::cout<<"the snake has collided";
         return true;
     } 
 
@@ -74,4 +66,13 @@ bool Snake::isColliding(int x, int y){
 
 void Snake::increaseSnakeLength(){
    snakebody.push_back({snakebody[snakebody.size() - 1].first, snakebody[snakebody.size() -1].second }); 
+}
+
+bool Snake::snakeBodyCollision(){
+    for(std::size_t i = 1; i< snakebody.size() ; i++){
+        if(isColliding(snakebody[i].first, snakebody[i].second)){
+            return true;
+        }
+    }
+   return false;
 }

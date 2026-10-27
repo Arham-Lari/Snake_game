@@ -6,41 +6,44 @@
 #include <utility>
 
 Game::Game(){
-  screen = Screen();
-  snake = Snake();
-  foodPos = foodGenerator();
+    screen = Screen();
+    snake = Snake();
+    foodPos = foodGenerator();
 }
 
 void Game::draw(){
-  screen.draw();
-  snake.draw();
+    screen.draw();
+    snake.draw();
 
-  DrawRectangle(foodPos.first * 40, foodPos.second * 40, 40, 40, RED);
-  
+    DrawRectangle(foodPos.first * 40, foodPos.second * 40, 40, 40, RED);
+
 }
 
 void Game::movement(){
 
-        if(timer(0.15)){
-            if(isTouchingBoundary()) return;
+    if(timer(0.15)){
+        if(isTouchingBoundary()) return;
+        else if(snake.snakeBodyCollision()) return;
+        else{
             foodAte();
             snake.move();
         }
+    }
 
-        if(IsKeyDown(KEY_S)){
-            snake.moveDown();
-        }
-        
-        if(IsKeyDown(KEY_W)){
-            snake.moveUp();
-        }
+    if(IsKeyDown(KEY_S)){
+        snake.moveDown();
+    }
 
-        if(IsKeyDown(KEY_A)){
-            snake.moveLeft();
-        }
-        if(IsKeyDown(KEY_D)){
-            snake.moveRight();
-        }
+    if(IsKeyDown(KEY_W)){
+        snake.moveUp();
+    }
+
+    if(IsKeyDown(KEY_A)){
+        snake.moveLeft();
+    }
+    if(IsKeyDown(KEY_D)){
+        snake.moveRight();
+    }
 }
 
 bool Game::timer(double interval){
@@ -65,7 +68,7 @@ bool Game::isTouchingBoundary(){
             return true;
         }
 
-  return false;
+    return false;
 }
 
 std::pair<int, int> Game::foodGenerator()
@@ -76,16 +79,17 @@ std::pair<int, int> Game::foodGenerator()
     std::pair<int, int> foodPos = { (rand()%(col / 1) *1),(rand()%(row / 1) * 1)};
 
     if(snake.isColliding(foodPos.first, foodPos.second)){
-       foodPos = { (rand()%(col / 1) *1),(rand()%(row / 1) * 1)};
+        foodPos = { (rand()%(col / 1) *1),(rand()%(row / 1) * 1)};
     }
 
     return foodPos;
 }
 
 void Game::foodAte(){
-   
+
     if(snake.isColliding(foodPos.first, foodPos.second)){
         foodPos = foodGenerator();
         snake.increaseSnakeLength();
     }
 }
+

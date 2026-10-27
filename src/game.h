@@ -15,6 +15,7 @@ class Game{
 
     private:
         Snake snake;
+        void snakeCollide();
         std::pair<int, int> foodPos;
         Screen screen;
         bool timer(double);
