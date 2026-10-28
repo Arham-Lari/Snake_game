@@ -17,7 +17,6 @@ int main(int argc , char* argv[])
 
         game.draw();
         game.movement();
-        game.foodAte();
 
         EndDrawing();
     }

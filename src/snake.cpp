@@ -4,12 +4,12 @@
 
 Snake::Snake(){
     snakebody = {
-        {8,5},
-        {9,5},
-        {10,5},
+        {15,5},
+        {16,5},
+        {17,5},
     };
     cellsize = 40;
-    dx = 0;
+    dx = -1;
     dy = 0;
 }
 
@@ -69,8 +69,10 @@ void Snake::increaseSnakeLength(){
 }
 
 bool Snake::snakeBodyCollision(){
-    for(std::size_t i = 1; i< snakebody.size() ; i++){
-        if(isColliding(snakebody[i].first, snakebody[i].second)){
+    if(snakebody.size() < 3) return false;
+
+    for(std::size_t i = 1; i < snakebody.size() ; ++i){
+        if(snakebody[0] == snakebody[i]){
             return true;
         }
     }

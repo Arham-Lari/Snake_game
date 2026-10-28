@@ -22,11 +22,13 @@ void Game::draw(){
 void Game::movement(){
 
     if(timer(0.15)){
-        if(isTouchingBoundary()) return;
-        else{
-            foodAte();
-            snake.move();
-        }
+
+        if(isTouchingBoundary() || snake.snakeBodyCollision()) return;
+
+        foodAte();
+        snake.move();
+
+
     }
 
     if(IsKeyDown(KEY_S)){
