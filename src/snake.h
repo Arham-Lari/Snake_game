@@ -14,6 +14,7 @@ class Snake{
         bool isColliding(int x ,int y);
         void increaseSnakeLength();
         bool snakeBodyCollision();
+        void reset();
 
     private:
         Screen sc ;

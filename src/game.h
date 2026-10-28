@@ -12,8 +12,10 @@ class Game{
         void draw();
         void movement();
         void foodAte();
+        void reset();
 
     private:
+        bool isPlayerAllowed ;
         Snake snake;
         void snakeCollide();
         std::pair<int, int> foodPos;

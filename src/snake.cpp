@@ -78,3 +78,13 @@ bool Snake::snakeBodyCollision(){
     }
    return false;
 }
+
+void Snake::reset(){
+    snakebody = {
+        {15,5},
+        {16,5},
+        {17,5},
+    };
+    dx = -1;
+    dy = 0;
+}
