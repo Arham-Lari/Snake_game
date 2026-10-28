@@ -13,9 +13,10 @@ int main(int argc , char* argv[])
 
     while (!WindowShouldClose()) {
         BeginDrawing();
-        ClearBackground(WHITE);
+     
 
         game.draw();
+        DrawText(TextFormat("score %i",game.score),10,30,30,WHITE);
         game.movement();
 
         EndDrawing();

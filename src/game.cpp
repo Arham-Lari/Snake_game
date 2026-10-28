@@ -10,6 +10,7 @@ Game::Game(){
     snake = Snake();
     foodPos = foodGenerator();
     isPlayerAllowed = true;
+    score = 0;
 }
 
 void Game::draw(){
@@ -39,6 +40,7 @@ void Game::movement(){
         reset();
         if(IsKeyDown(KEY_ENTER)){
             snake.reset();
+            foodPos = foodGenerator();
             isPlayerAllowed = true;
         }
     }
@@ -103,10 +105,12 @@ void Game::foodAte(){
     if(snake.isColliding(foodPos.first, foodPos.second)){
         foodPos = foodGenerator();
         snake.increaseSnakeLength();
+        score++;
     }
 }
 
 void Game::reset(){
+    score = 0;
     DrawText("Game Over..", GetScreenWidth()/2 - 250, GetScreenHeight()/2 -60, 100,RED);
     DrawText("Please Press Enter to  ", GetScreenWidth()/2 -30, GetScreenHeight()/2 +30, 30, RED);
     DrawText("restart the game", GetScreenWidth()/2 -30, GetScreenHeight()/2 + 60, 30, RED);

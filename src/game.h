@@ -13,6 +13,7 @@ class Game{
         void movement();
         void foodAte();
         void reset();
+        int score;
 
     private:
         bool isPlayerAllowed ;
